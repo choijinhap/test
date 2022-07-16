@@ -1,13 +1,25 @@
-import { Route, Routes } from "react-router-dom";
-import Button from "./components/Button";
+import { useState } from "react";
+
 function App() {
-  const buttonOnclick = () => {
-    console.log("버튼클릭");
+  const [counter, setCounter] = useState(0);
+  const plusButtonClick = () => {
+    setCounter((count) => count + 1);
+  };
+  const minusButtonClick = () => {
+    setCounter((count) => count - 1);
   };
   return (
-    <>
-      <Button onClick={buttonOnclick} text="버튼" />
-    </>
+    <div>
+      <h3 data-testid="counter">{counter}</h3>
+      <div>
+        <button data-testid="minus-button" onClick={minusButtonClick}>
+          -
+        </button>
+        <button data-testid="plus-button" onClick={plusButtonClick}>
+          +
+        </button>
+      </div>
+    </div>
   );
 }
 
